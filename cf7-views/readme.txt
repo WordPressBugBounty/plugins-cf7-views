@@ -3,8 +3,8 @@ Contributors: aman086, webholics, contactform7views
 Tags:contactform7,database, table,cf7,grid
 Requires PHP: 7.0
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 3.1.2
+Tested up to: 6.7
+Stable tag: 3.1.3
 License: GPLv2 or later
 
 Easily display Contact Form 7 Entries/Submissions on your site frontend.
@@ -146,6 +146,9 @@ No, you can create as many views as you like & use it anywhere on your site usin
 
 
 == Changelog ==
+3.1.3 (20th Nov 2024)
+Fix: Fixed an issue when deleting a Field from View can cause white screen if Field settings are opened.
+
 3.1.2 (22nd Oct 2024)
 Fix: Resolved an issue where the View Settings tab became unclickable after selecting a field in the Editing view.
 Update: Upgraded WordPress scripts and React libraries to the latest versions.
