@@ -240,8 +240,17 @@ class CF7_Views_Shortcode {
 				if ( ! empty( $value ) ) {
 					$img_html = '';
 					foreach ( $value as $file ) {
-						if ( $this->is_image_link( $file['path'] ) ) {
-							$img_html .= '<img  class="cf7-view-img" src="' . wp_strip_all_tags( $file['path'] ) . '"></br>';
+						if ( isset( $fieldSettings->displayFileType ) && $fieldSettings->displayFileType == 'Image' ) {
+							$width    = ! empty( $fieldSettings->imageWidth ) ? $fieldSettings->imageWidth : '100%';
+							$img_html = '<img style="width:' . $width . '" class="cf7-view-img" src="' . wp_strip_all_tags( $file['path'] ) . '">';
+
+							if ( isset( $fieldSettings->onClickAction ) && $fieldSettings->onClickAction == 'newTab' ) {
+								$img_html = sprintf(
+									'<a href="%s" rel="noopener" target="_blank">%s</a>',
+									esc_url( $file['path'] ),
+									$img_html
+								);
+							}
 						} else {
 							$img_html = sprintf(
 								'<a href="%s" rel="noopener" target="_blank">%s</a>',

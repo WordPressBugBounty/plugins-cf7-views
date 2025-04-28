@@ -3,8 +3,8 @@ Contributors: aman086, webholics, contactform7views
 Tags:contactform7,database, table,cf7,grid
 Requires PHP: 7.0
 Requires at least: 5.0
-Tested up to: 6.7
-Stable tag: 3.1.4
+Tested up to: 6.8
+Stable tag: 3.1.5
 License: GPLv2 or later
 
 Easily display Contact Form 7 Entries/Submissions on your site frontend.
@@ -14,7 +14,7 @@ Easily display Contact Form 7 Entries/Submissions on your site frontend.
 [Contact Form 7 Views](https://cf7views.com) is an addon for Contact Form 7 that lets you to display Contact Form 7 submissions/entries in your site frontend using intuitive drag & drop View builder.
 It shows submissions saved by [Flamingo plugin](https://wordpress.org/plugins/flamingo/)
 You need the Flamingo plugin installed to be able to use this plugin.
-You can create Table View, [List View](https://cf7views.com/pricing/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version) or [DataTable View](https://cf7views.com/pricing/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version).
+You can create Table View, [List View](https://cf7views.com/docs/how-to-create-table-view-of-contact-form-7-entries/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version) or [DataTable View](https://cf7views.com/docs/how-to-create-a-datatable-view-of-contact-form-7-entries-in-frontend/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version).
 It allows you add content before & after the View.
 You can set number of submissions to display on page.
 
@@ -31,7 +31,7 @@ You can set number of submissions to display on page.
 Get more features in [Pro version](https://cf7views.com/pricing?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version)
 * [Edit Entries.](https://cf7views.com/docs/how-to-setup-inline-edit-addon-for-cf7-views/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version)
 * [List View Format.](https://cf7views.com/pricing/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version)
-* [DataTable View Format.](https://cf7views.com/pricing/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version)
+* [DataTable View Format.](https://cf7views.com/docs/how-to-create-a-datatable-view-of-contact-form-7-entries-in-frontend/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version)
 * [Single Entry View – Display Contact Form 7 Forms Entry details on Single Page.](https://cf7views.com/docs/how-to-display-contact-form-7-entry-details-on-a-single-page/)
 * Add Search Form above or at View bottom to filter/search submissions by field values.
 * [Filter submissions by field values.](https://cf7views.com/docs/how-to-filter-contact-form-7-entries-by-field-value/)
@@ -146,6 +146,10 @@ No, you can create as many views as you like & use it anywhere on your site usin
 
 
 == Changelog ==
+3.1.5 (28th April 2025)
+Fix: Image width setting was not applying correctly.
+Fix: Uploaded files can be now displayed as clickable links.
+
 3.1.4 (21st Feb 2025)
 Fix:Resolved an issue where uploading a file with the same name would overwrite the existing file. Now, a unique number is appended to the file name to prevent replacement.
 
