@@ -215,11 +215,11 @@ class CF7_Views_Shortcode {
 		$view_type     = $view_settings->viewType;
 		$field_html    = '';
 		if ( $view_type == 'table' ) {
-			$field_html .= '<td>';
+			$width       = ! empty( $field->fieldSettings->columnWidth ) ? $field->fieldSettings->columnWidth : 'auto';
+			$field_html .= '<td  style="width:' . $width . '">';
 		}
 
-		$width       = ! empty( $field->fieldSettings->columnWidth ) ? $field->fieldSettings->columnWidth : 'auto';
-		$field_html .= '<div  style="width:' . $width . '" class="cf7-view-field-cont  field-' . $form_field_id . ' ' . $class . '">';
+		$field_html .= '<div  class="cf7-view-field-cont  field-' . $form_field_id . ' ' . $class . '">';
 
 		// check if it's a form field
 		if ( ! empty( $sub ) && is_object( $sub ) && ( $form_field_id !== 'entryId' && $form_field_id !== 'sequenceNumber' ) ) {
