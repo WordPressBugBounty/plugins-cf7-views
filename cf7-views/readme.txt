@@ -1,17 +1,18 @@
-===Contact Form 7 Views - Display & Edit Contact Form 7 Entries on your site frontend===
+===CF7 Views - Complete Entry Management for Contact Form 7===
 Contributors: aman086, webholics, contactform7views
 Tags:contactform7,database, table,cf7,grid
 Requires PHP: 7.0
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 3.1.6
+Stable tag: 3.2
 License: GPLv2 or later
 
 Easily display Contact Form 7 Entries/Submissions on your site frontend.
 
 == Description ==
 
-[Contact Form 7 Views](https://cf7views.com) is an addon for Contact Form 7 that lets you to display Contact Form 7 submissions/entries in your site frontend using intuitive drag & drop View builder.
+CF7 Views v3.1.7 now has inbuilt feature to saves your Contact Form entries.
+[CF7 Views Views](https://cf7views.com) is an addon for Contact Form 7 that lets you to display Contact Form 7 submissions/entries in your site frontend using intuitive drag & drop View builder.
 It shows submissions saved by [Flamingo plugin](https://wordpress.org/plugins/flamingo/)
 You need the Flamingo plugin installed to be able to use this plugin.
 You can create Table View, [List View](https://cf7views.com/docs/how-to-create-table-view-of-contact-form-7-entries/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version) or [DataTable View](https://cf7views.com/docs/how-to-create-a-datatable-view-of-contact-form-7-entries-in-frontend/?utm_source=wordpress-plugin-repo&utm_medium=cf7-views&utm_campaign=cf7-views-lite-version).
@@ -146,6 +147,9 @@ No, you can create as many views as you like & use it anywhere on your site usin
 
 
 == Changelog ==
+3.2 (15th Sep 2025)
+New: CF7 Views 2.0 now lets you save and manage form entries directly, giving you more control over your data.
+
 3.1.6 (2nd May 2025)
 Fix: Resolved an issue where column widths were not being applied correctly in tables.
 

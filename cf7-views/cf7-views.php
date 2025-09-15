@@ -2,12 +2,12 @@
 /*
  * Plugin Name: CF7 Views
  * Plugin URI: https://cf7views.com
- * Description: Display Contact Form 7 Submissions in frontend.
- * Version: 3.1.6
+ * Description: Display Contact Form 7 Submissions in frontend. Now includes built-in entry storage and management.
+ * Version: 3.2
  * Author: WebHolics
  * Author URI: https://cf7views.com
  * Text Domain: cf7-views
- * Requires Plugins: contact-form-7, flamingo
+ * Requires Plugins: contact-form-7
  * Copyright 2025.
  */
 
@@ -18,6 +18,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'CF7_VIEWS_URL', plugins_url() . '/' . basename( dirname( __FILE__ ) ) );
 define( 'CF7_VIEWS_DIR_URL', WP_PLUGIN_DIR . '/' . basename( dirname( __FILE__ ) ) );
 
+// Plugin activation hook
+register_activation_hook( __FILE__, 'cf7_views_activate_plugin' );
+
+function cf7_views_activate_plugin() {
+	// Ensure entries database is created on activation
+	require_once CF7_VIEWS_DIR_URL . '/inc/admin/entries/class-cf7-views-entries-db.php';
+	$db = new CF7_Views_Entries_DB();
+	$db->maybe_create_table();
+}
+
 function cf7_views_load_plugin_textdomain() {
 	load_plugin_textdomain( 'cf7-views', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
@@ -25,31 +35,30 @@ add_action( 'plugins_loaded', 'cf7_views_load_plugin_textdomain' );
 add_action( 'plugins_loaded', 'cf7_views_include_files', 100 );
 
 
+
 add_action(
 	'admin_notices',
 	function () {
 
-		if ( ! defined( 'WPCF7_VERSION' ) ) {
+		if ( ! defined( 'WPCF7_VERSION' ) || ! class_exists( 'Flamingo_Inbound_Message' ) ) {
 			if ( current_user_can( 'update_plugins' ) ) {
-				?>
-				<div class="admin-notice notice notice-warning">
-					<p>
-						<strong>CF7 Views</strong> depends on Contact Form 7. Please install <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a>.
-					</p>
-				</div>
-				<?php
-			}
-		}
-
-		if ( ! defined( 'FLAMINGO_VERSION' ) ) {
-			if ( current_user_can( 'update_plugins' ) ) {
-				?>
-				<div class="admin-notice notice notice-warning">
-					<p>
-						<strong>CF7 Views</strong> depends on Flamingo add-on for Contact Form 7. Please install <a target="_blank" href="https://wordpress.org/plugins/flamingo/">Flamingo add-on</a>.
-					</p>
-				</div>
-				<?php
+				echo '	<div class="admin-notice notice notice-warning">';
+				echo sprintf(
+					wp_kses(
+						__( 'Please install %1$s Contact Form 7 %2$s & %3$s Flamingo %4$s to use CF7 Views', 'cf7-views' ),
+						array(
+							'a' => array(
+								'href'  => array(),
+								'title' => array(),
+							),
+						)
+					),
+					'<a target="_blank" href="' . esc_url( 'https://wordpress.org/plugins/contact-form-7/' ) . '">',
+					'</a>',
+					'<a target="_blank" href="' . esc_url( 'https://wordpress.org/plugins/flamingo/' ) . '">',
+					'</a>'
+				);
+				echo '</div>';
 			}
 		}
 		return;
@@ -73,9 +82,27 @@ function cf7_views_include_files() {
 		require_once CF7_VIEWS_DIR_URL . '/inc/admin/class-cf7-views-upgrade-to-pro-page.php';
 		require_once CF7_VIEWS_DIR_URL . '/inc/class-cf7-views-image-upload.php';
 
+		// Entry Management System
+		require_once CF7_VIEWS_DIR_URL . '/inc/admin/entries/class-cf7-views-entries-db.php';
+		require_once CF7_VIEWS_DIR_URL . '/inc/admin/entries/class-cf7-views-entry-capture.php';
+		require_once CF7_VIEWS_DIR_URL . '/inc/admin/entries/class-cf7-views-entries-list-table.php';
+		require_once CF7_VIEWS_DIR_URL . '/inc/admin/entries/class-cf7-views-entries-admin.php';
+		require_once CF7_VIEWS_DIR_URL . '/inc/admin/entries/class-cf7-views-frontend-query.php';
+
 		// Frontend
 		require_once CF7_VIEWS_DIR_URL . '/inc/pagination.php';
 		require_once CF7_VIEWS_DIR_URL . '/inc/class-cf7-views-shortcode.php';
+
+		// Initialize entry management
+		if ( class_exists( 'CF7_Views_Entry_Capture' ) ) {
+			new CF7_Views_Entry_Capture();
+		}
+		if ( class_exists( 'CF7_Views_Entries_Admin' ) ) {
+			new CF7_Views_Entries_Admin();
+		}
+		if ( class_exists( 'CF7_Views_Frontend_Query' ) ) {
+			new CF7_Views_Frontend_Query();
+		}
 	}
 }
 add_action( 'admin_enqueue_scripts', 'cf7_views_admin_scripts' );
@@ -135,6 +162,7 @@ function cf7_views_admin_scripts( $hook ) {
 
 function cf7_views_frontend_scripts() {
 	if ( ! defined( 'CF7_VIEWS_PRO_URL' ) ) {
+
 		wp_enqueue_style( 'pure-css', CF7_VIEWS_URL . '/assets/css/pure-min.css' );
 		wp_enqueue_style( 'pure-grid-css', CF7_VIEWS_URL . '/assets/css/grids-responsive-min.css' );
 		wp_enqueue_style( 'cf7-views-front', CF7_VIEWS_URL . '/assets/css/cf7-views-display.css' );

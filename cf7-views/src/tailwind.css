@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* WordPress Admin friendly styles for CF7 Views Entries */
+.cf7-views-admin {
+	@apply bg-white;
+}
+
+.cf7-views-beta-badge {
+	@apply bg-amber-400 text-amber-900 font-medium text-xs px-2.5 py-1 rounded-full ml-2 inline-block;
+}
+
+.cf7-views-beta-note {
+	@apply bg-amber-50 border-l-4 border-amber-400 p-5 rounded-r text-sm text-gray-800 my-6 shadow-sm;
+}
+
+.cf7-views-beta-note p {
+	@apply my-2 last:mb-0;
+}
+
+/* Statistics section */
+.cf7-views-stats {
+	@apply bg-blue-50 border-l-4 border-blue-400 p-5 rounded-r my-6 shadow-sm;
+}
+
+/* Improved spacing for entry details */
+.cf7-views-entry-details {
+	@apply space-y-10;
+}
+
+.cf7-views-entry-meta,
+.cf7-views-entry-actions {
+	@apply shadow-sm border border-gray-200;
+}
+
+/* Enhanced spacing for entry cards */
+.cf7-views-entry-meta table td,
+.cf7-views-entry-actions .space-y-6 > div {
+	@apply min-h-[3rem];
+}
+
+/* Better button spacing in actions */
+.cf7-views-entry-actions .space-y-6 > div:not(:last-child) {
+	@apply mb-4;
+}
+
+/* Table improvements */
+.cf7-views-table {
+	@apply w-full border-collapse bg-white shadow-sm border border-gray-200 rounded-lg overflow-hidden;
+}
+
+.cf7-views-table th {
+	@apply bg-gray-50 px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200;
+}
+
+.cf7-views-table td {
+	@apply px-6 py-4 text-sm text-gray-900 border-b border-gray-100;
+}
+
+.cf7-views-table tbody tr:hover {
+	@apply bg-gray-50 transition-colors duration-150;
+}
+
+.cf7-views-table tbody tr:last-child td {
+	@apply border-b-0;
+}
+
+/* Form controls with improved spacing */
+.cf7-views-select {
+	@apply border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-150;
+}
+
+.cf7-views-input {
+	@apply border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-150;
+}
+
+.cf7-views-button {
+	@apply bg-blue-600 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 transition-all duration-150 inline-flex items-center;
+}
+
+.cf7-views-button-secondary {
+	@apply bg-gray-200 text-gray-800 px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-300 focus:ring-2 focus:ring-gray-500 transition-all duration-150 inline-flex items-center;
+}
+
+.cf7-views-button-danger {
+	@apply bg-red-600 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-red-700 focus:ring-2 focus:ring-red-500 transition-all duration-150 inline-flex items-center;
+}
