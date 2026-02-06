@@ -3,7 +3,7 @@
  * Plugin Name: CF7 Views
  * Plugin URI: https://cf7views.com
  * Description: Display Contact Form 7 Submissions in frontend. Now includes built-in entry storage and management.
- * Version: 3.2
+ * Version: 3.2.1.1
  * Author: WebHolics
  * Author URI: https://cf7views.com
  * Text Domain: cf7-views

@@ -3,8 +3,8 @@ Contributors: aman086, webholics, contactform7views
 Tags:contactform7,database, table,cf7,grid
 Requires PHP: 7.0
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 3.2
+Tested up to: 6.9
+Stable tag: 3.2.1.1
 License: GPLv2 or later
 
 Easily display Contact Form 7 Entries/Submissions on your site frontend.
@@ -147,6 +147,12 @@ No, you can create as many views as you like & use it anywhere on your site usin
 
 
 == Changelog ==
+3.2.2.1 (6th Dec 2025)
+Added: Compatibility with WordPress 6.9
+
+3.2.1 (3rd Nov 2025)
+Minor Optimizations
+
 3.2 (15th Sep 2025)
 New: CF7 Views 2.0 now lets you save and manage form entries directly, giving you more control over your data.
 
