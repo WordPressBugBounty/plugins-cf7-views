@@ -4,7 +4,7 @@ Tags:contactform7,database, table,cf7,grid
 Requires PHP: 7.0
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 3.2.1.1
+Stable tag: 3.2.2
 License: GPLv2 or later
 
 Easily display Contact Form 7 Entries/Submissions on your site frontend.
@@ -147,8 +147,10 @@ No, you can create as many views as you like & use it anywhere on your site usin
 
 
 == Changelog ==
-3.2.2.1 (6th Dec 2025)
-Added: Compatibility with WordPress 6.9
+3.2.2 (9th Feb 2026)
+Fix: Removed global css styles.
+New: Added icons to the settings.
+New: Table/List designs settings are now available in pro version.
 
 3.2.1 (3rd Nov 2025)
 Minor Optimizations
