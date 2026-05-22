@@ -131,7 +131,7 @@ class CF7_Views_Shortcode {
 	function get_table_content( $section_type, $view_settings, $submissions ) {
 		$content      = '';
 		$section_rows = $view_settings->sections->{$section_type}->rows;
-		$content      = ' <div class="cf7-views-cont cf7-views-' . $this->view_id . '-cont"> <table class="cf7-views-table cf7-view-' . $this->view_id . '-table pure-table pure-table-bordered">';
+		$content      = ' <div class="cf7-views-cont cf7-views-' . esc_attr( $this->view_id ) . '-cont"> <table class="cf7-views-table cf7-view-' . esc_attr( $this->view_id ) . '-table pure-table pure-table-bordered">';
 		$content     .= '<thead>';
 		foreach ( $submissions as $sub ) {
 			$content .= '<tr>';
@@ -195,7 +195,7 @@ class CF7_Views_Shortcode {
 		$column_size   = $view_settings->columns->{$column_id}->size;
 		$column_fields = $view_settings->columns->{$column_id}->fields;
 
-		$column_content = '<div class="pure-u-1 pure-u-md-' . $column_size . '">';
+		$column_content = '<div class="pure-u-1 pure-u-md-' . esc_attr( $column_size ) . '">';
 
 		foreach ( $column_fields as $field_id ) {
 
@@ -216,16 +216,16 @@ class CF7_Views_Shortcode {
 		$field_html    = '';
 		if ( $view_type == 'table' ) {
 			$width       = ! empty( $field->fieldSettings->columnWidth ) ? $field->fieldSettings->columnWidth : 'auto';
-			$field_html .= '<td  style="width:' . $width . '">';
+			$field_html .= '<td style="width:' . esc_attr( $width ) . '">';
 		}
 
-		$field_html .= '<div  class="cf7-view-field-cont  field-' . $form_field_id . ' ' . $class . '">';
+		$field_html .= '<div class="cf7-view-field-cont field-' . esc_attr( $form_field_id ) . ' ' . esc_attr( $class ) . '">';
 
 		// check if it's a form field
 		if ( ! empty( $sub ) && is_object( $sub ) && ( $form_field_id !== 'entryId' && $form_field_id !== 'sequenceNumber' ) ) {
 			// if view type is table then don't send label
 			if ( ! empty( $label && $view_type != 'table' ) ) {
-				$field_html .= '<div class="field-label">' . $label . '</div>';
+				$field_html .= '<div class="field-label">' . esc_html( $label ) . '</div>';
 			}
 			$form_field_type = isset( $this->form_fields[ $form_field_id ] ) ? $this->form_fields[ $form_field_id ]['type'] : $form_field_id;
 			$field_value     = $this->get_field_value( $form_field_id, $sub );
@@ -242,7 +242,7 @@ class CF7_Views_Shortcode {
 					foreach ( $value as $file ) {
 						if ( isset( $fieldSettings->displayFileType ) && $fieldSettings->displayFileType == 'Image' ) {
 							$width    = ! empty( $fieldSettings->imageWidth ) ? $fieldSettings->imageWidth : '100%';
-							$img_html = '<img style="width:' . $width . '" class="cf7-view-img" src="' . wp_strip_all_tags( $file['path'] ) . '">';
+							$img_html = '<img style="width:' . esc_attr( $width ) . '" class="cf7-view-img" src="' . esc_url( $file['path'] ) . '">';
 
 							if ( isset( $fieldSettings->onClickAction ) && $fieldSettings->onClickAction == 'newTab' ) {
 								$img_html = sprintf(
@@ -255,7 +255,7 @@ class CF7_Views_Shortcode {
 							$img_html = sprintf(
 								'<a href="%s" rel="noopener" target="_blank">%s</a>',
 								esc_url( $file['path'] ),
-								basename( $file['path'] )
+								esc_html( basename( $file['path'] ) )
 							);
 						}
 					}
@@ -264,7 +264,7 @@ class CF7_Views_Shortcode {
 			}
 
 			$field_value = apply_filters( 'cf7views-field-value', $field_value, $field, $view_settings, $sub );
-			$field_html .= $field_value;
+			$field_html .= esc_html( (string) $field_value );
 		} else {
 
 			switch ( $form_field_id ) {
@@ -276,12 +276,12 @@ class CF7_Views_Shortcode {
 					break;
 				case 'entryId':
 					$field_html .= '<div class="cf7-view-field-value cf7-view-field-type-entryId-value">';
-					$field_html .= $sub->id();
+					$field_html .= esc_html( $sub->id() );
 					$field_html .= '</div>';
 					break;
 				case 'sequenceNumber':
 					$field_html .= '<div class="cf7-view-field-value cf7-view-field-type-sequenceNumber-value">';
-					$field_html .= $this->seq_no;
+					$field_html .= esc_html( $this->seq_no );
 					$field_html .= '</div>';
 					break;
 			}
@@ -301,8 +301,8 @@ class CF7_Views_Shortcode {
 		$label         = $fieldSettings->useCustomLabel ? $fieldSettings->label : $field->label;
 		$width         = ! empty( $field->fieldSettings->columnWidth ) ? $field->fieldSettings->columnWidth : 'auto';
 		$header        = '<th>';
-		$header       .= '<div style="width:' . $width . '" class="cf7-views-table-header ">';
-		$header       .= $label;
+		$header       .= '<div style="width:' . esc_attr( $width ) . '" class="cf7-views-table-header ">';
+		$header       .= esc_html( $label );
 		$header       .= '</div>';
 		$header       .= '</th>';
 		return $header;
