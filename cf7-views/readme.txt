@@ -3,8 +3,8 @@ Contributors: aman086, webholics, contactform7views
 Tags:contactform7,database, table,cf7,grid
 Requires PHP: 7.0
 Requires at least: 5.0
-Tested up to: 7.0
-Stable tag: 3.2.4
+Tested up to: 7.1
+Stable tag: 3.2.5
 License: GPLv2 or later
 
 Easily display Contact Form 7 Entries/Submissions on your site frontend.
@@ -129,7 +129,7 @@ Yes, the plugin includes options to sort form submissions by different criteria 
 
 = Can I display form submissions in different formats? =
 Yes, the plugin includes options to display form submissions in different formats such as a list, grid, or table. This allows you to choose the format that best suits your website's design and layout.
-= Can I display form submissions with a search bar? =
+= Can I display form submissions with a search bar?=
 Yes, the plugin includes an option to include a search bar on the frontend. This allows users to search for specific form submissions based on certain criteria such as form fields or submission date.
 
 = Can I display form submissions with a pagination? =
@@ -147,10 +147,11 @@ No, you can create as many views as you like & use it anywhere on your site usin
 
 
 == Changelog ==
-3.2.4 (5th August 2026)
-Fix: Few Minor updates and improvements
+3.2.5 (22nd August 2026)
+Fix: Fixed the embed icon overflowing outside the button container.
 
-3.2.3 (22th May 2026)
+
+3.2.3 (22nd May 2026)
 Security: Escaped frontend output in CF7 Views to prevent stored XSS when rendering Contact Form 7/Flamingo submission values in shortcode views. Also hardened table headers and file/image attributes by escaping URLs, labels, and class/width values.
 
 3.2.2 (9th Feb 2026)
@@ -186,7 +187,7 @@ Fix: Fixed Help menu item not working.
 
 3.1 (7th August 2024)
 New: Added Contact Form 7 and Flamingo as required plugin. A notice will be shown in admin if these plugins are not installed and activated.
-Fix: Fixed sorting not working.
+Fix:Fixed sorting not working.
 Fix: Fixed View marked as draft if duplicated.
 
 3.0.2 (8th June 2024)

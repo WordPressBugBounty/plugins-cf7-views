@@ -3,7 +3,7 @@
  * Plugin Name: CF7 Views
  * Plugin URI: https://cf7views.com
  * Description: Display Contact Form 7 Submissions in frontend. Now includes built-in entry storage and management.
- * Version: 3.2.4
+ * Version: 3.2.5
  * Author: WebHolics
  * Author URI: https://amansaini.me
  * Text Domain: cf7-views
@@ -76,6 +76,7 @@ function cf7_views_include_files() {
 		require_once CF7_VIEWS_DIR_URL . '/inc/admin/class-cf7-views-list-table.php';
 		require_once CF7_VIEWS_DIR_URL . '/inc/admin/class-cf7-views-editor.php';
 		require_once CF7_VIEWS_DIR_URL . '/inc/admin/class-cf7-views-ajax.php';
+		// require_once CF7_VIEWS_DIR_URL . '/inc/admin/review/class-cf7-views-review.php';
 		require_once CF7_VIEWS_DIR_URL . '/inc/admin/class-cf7-views-support.php';
 		require_once CF7_VIEWS_DIR_URL . '/inc/elementor/class-cf7-views-elementor-widget-init.php';
 		require_once CF7_VIEWS_DIR_URL . '/inc/admin/class-cf7-views-upgrade-to-pro-page.php';
