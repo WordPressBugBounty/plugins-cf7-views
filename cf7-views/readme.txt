@@ -4,7 +4,7 @@ Tags:contactform7,database, table,cf7,grid
 Requires PHP: 7.0
 Requires at least: 5.0
 Tested up to: 7.1
-Stable tag: 3.2.5
+Stable tag: 3.2.6
 License: GPLv2 or later
 
 Easily display Contact Form 7 Entries/Submissions on your site frontend.
@@ -147,9 +147,13 @@ No, you can create as many views as you like & use it anywhere on your site usin
 
 
 == Changelog ==
+3.2.6 (25th September 2026)
+Security: Fixed a stored XSS in the View editor. View settings are now safely encoded before being printed into inline scripts, and the settings field is protected so lower-privileged users can't write to it.
+Security: Fixed a reflected XSS on the Entries (Beta) admin page by removing the request parameter from the "Clear Filters" link and escaping its URL.
+
+
 3.2.5 (22nd August 2026)
 Fix: Fixed the embed icon overflowing outside the button container.
-
 
 3.2.3 (22nd May 2026)
 Security: Escaped frontend output in CF7 Views to prevent stored XSS when rendering Contact Form 7/Flamingo submission values in shortcode views. Also hardened table headers and file/image attributes by escaping URLs, labels, and class/width values.

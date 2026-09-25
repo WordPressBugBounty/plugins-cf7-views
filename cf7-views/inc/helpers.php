@@ -92,3 +92,21 @@ function cf7_views_get_post_by_slug( $slug ) {
 
 	return $posts[0];
 }
+
+/**
+ * Encode a PHP string as a JavaScript string literal (including quotes) that
+ * is safe to print inside an inline <script> block.
+ */
+function cf7_views_js_string( $value ) {
+	$encoded = wp_json_encode( (string) $value, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT );
+	return false === $encoded ? '""' : $encoded;
+}
+
+/**
+ * Mark view_settings as protected so it cannot be written through generic
+ * custom-field paths (XML-RPC custom_fields, the Custom Fields UI, etc.).
+ */
+function cf7_views_protect_meta( $protected, $meta_key ) {
+	return 'view_settings' === $meta_key ? true : $protected;
+}
+add_filter( 'is_protected_meta', 'cf7_views_protect_meta', 10, 2 );

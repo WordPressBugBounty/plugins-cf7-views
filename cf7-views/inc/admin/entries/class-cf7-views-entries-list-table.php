@@ -333,7 +333,7 @@ class CF7_Views_Entries_List_Table extends WP_List_Table {
 		?>
 		<div class="alignleft actions">
 			<input type="hidden" name="post_type" value="cf7-views">
-			<input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>">
+			<input type="hidden" name="page" value="cf7-views-entries">
 
 			<select name="form_id" class="cf7-views-select">
 				<option value=""><?php _e( 'All Forms', 'cf7-views' ); ?></option>
@@ -350,7 +350,7 @@ class CF7_Views_Entries_List_Table extends WP_List_Table {
 			<input type="submit" name="filter_action" class="cf7-views-button" value="<?php _e( 'Filter', 'cf7-views' ); ?>">
 
 			<?php if ( $form_id || $date_from || $date_to ) : ?>
-				<a href="<?php echo admin_url( 'edit.php?post_type=cf7-views&page=' . $_REQUEST['page'] ); ?>" class="cf7-views-button-secondary">
+				<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=cf7-views&page=cf7-views-entries' ) ); ?>" class="cf7-views-button-secondary">
 					<span class="dashicons dashicons-dismiss" style="vertical-align: middle; margin-right: 4px; font-size: 14px;"></span>
 					<?php _e( 'Clear Filters', 'cf7-views' ); ?>
 				</a>

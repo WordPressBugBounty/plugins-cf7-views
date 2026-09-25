@@ -26,7 +26,7 @@ class CF7_Views_List_Table {
 			}
 			?>
 		<script>
-			var view_forms = '<?php echo addslashes( json_encode( $view_forms ) ); ?>';
+			var view_forms = <?php echo cf7_views_js_string( json_encode( $view_forms ) ); ?>;
 		</script>
 			<?php
 			echo '<div class="cf7-views-header"><img  src="' . CF7_VIEWS_URL . '/assets/images/logo.png" class="cf7-views-logo" alt="logo" >

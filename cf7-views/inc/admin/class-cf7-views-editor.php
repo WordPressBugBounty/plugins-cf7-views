@@ -55,12 +55,12 @@ class CF7_Views_Editor {
 
 			?>
 				<script>
-					var view_forms = '<?php echo addslashes( json_encode( $view_forms ) ); ?>';
-					var _view_id = '<?php echo $post_id; ?>';
-					var _view_title = '<?php echo addslashes( get_the_title( $post_id ) ); ?>';
-					var _view_saved_settings = '<?php echo addslashes( $cf7_view_saved_settings ); ?>';
-					var _view_form_fields =  '<?php echo addslashes( $form_fields ); ?>';
-					var _view_config =  '<?php echo addslashes( json_encode( $cf7_views_config ) ); ?>';
+					var view_forms = <?php echo cf7_views_js_string( json_encode( $view_forms ) ); ?>;
+					var _view_id = '<?php echo (int) $post_id; ?>';
+					var _view_title = <?php echo cf7_views_js_string( get_the_title( $post_id ) ); ?>;
+					var _view_saved_settings = <?php echo cf7_views_js_string( $cf7_view_saved_settings ); ?>;
+					var _view_form_fields =  <?php echo cf7_views_js_string( $form_fields ); ?>;
+					var _view_config =  <?php echo cf7_views_js_string( json_encode( $cf7_views_config ) ); ?>;
 					var cf7_views_active_addons = [];
 				</script>
 			<?php do_action( 'before_cf7_views_builder' ); ?>

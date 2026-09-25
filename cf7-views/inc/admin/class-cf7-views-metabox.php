@@ -48,10 +48,10 @@ class CF7_Views_Metabox {
 			$cf7_view_config = apply_filters( 'cf7_view_config', array('prefix'=>'cf7'));
 ?>
 	<script>
-		var view_forms = '<?php echo  addslashes(json_encode( $view_forms )); ?>';
-				var _view_saved_settings = '<?php echo addslashes( $view_saved_settings ); ?>';
-				var _view_form_fields =  '<?php echo  addslashes($form_fields); ?>';
-				var _view_config =  '<?php echo  addslashes(json_encode( $cf7_view_config )); ?>';
+		var view_forms = <?php echo cf7_views_js_string( json_encode( $view_forms ) ); ?>;
+				var _view_saved_settings = <?php echo cf7_views_js_string( $view_saved_settings ); ?>;
+				var _view_form_fields =  <?php echo cf7_views_js_string( $form_fields ); ?>;
+				var _view_config =  <?php echo cf7_views_js_string( json_encode( $cf7_view_config ) ); ?>;
 	</script>
 		   <div id="views-container"></div>
 
@@ -103,6 +103,11 @@ class CF7_Views_Metabox {
 			if ( ! current_user_can( 'edit_post', $post_id ) ) {
 				return $post_id;
 			}
+		}
+
+		// View settings are only editable by admins, matching CF7_Views_Ajax::save_view().
+		if ( ! current_user_can( 'manage_options' ) || ! isset( $_POST['final_view_settings'] ) ) {
+			return $post_id;
 		}
 
 		$finale_view_settings = $_POST['final_view_settings'];
